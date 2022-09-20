@@ -17,4 +17,8 @@ provider "arbitrary" {
 
 resource "aws_instance" "test" {
   provider = "arbitrary"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

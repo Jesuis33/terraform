@@ -5,4 +5,8 @@ resource "aws_instance" "foo" {
       user = "test"
     }
   }
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

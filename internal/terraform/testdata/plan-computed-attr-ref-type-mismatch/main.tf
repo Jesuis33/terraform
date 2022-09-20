@@ -7,4 +7,8 @@ resource "aws_instance" "foo" {
   # is unknown during plan, but we should still know that the unknown value
   # is a list of strings and so catch this during plan.
   ami = "${aws_ami_list.foo.ids}"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

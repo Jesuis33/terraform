@@ -11,19 +11,23 @@ variable "myvar" {
 }
 
 module "count_child" {
-  count = local.val
-  foo = count.index
-  bar = var.myvar
+  count  = local.val
+  foo    = count.index
+  bar    = var.myvar
   source = "./child"
 }
 
 module "for_each_child" {
   for_each = aws_instance.foo
-  foo = 2
-  bar = each.key
-  source = "./child"
+  foo      = 2
+  bar      = each.key
+  source   = "./child"
 }
 
 resource "aws_instance" "foo" {
   for_each = local.m
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

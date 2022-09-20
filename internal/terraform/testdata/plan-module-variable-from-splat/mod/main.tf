@@ -5,6 +5,10 @@ variable "param" {
 resource "aws_instance" "test" {
   count = "2"
   thing = "doesnt"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 output "out_from_splat" {

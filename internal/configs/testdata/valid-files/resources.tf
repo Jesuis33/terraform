@@ -1,7 +1,7 @@
 resource "aws_security_group" "firewall" {
   lifecycle {
     create_before_destroy = true
-    prevent_destroy = true
+    prevent_destroy       = true
     ignore_changes = [
       description,
     ]
@@ -22,11 +22,15 @@ resource "aws_security_group" "firewall" {
   provisioner "local-exec" {
     command = "echo hello"
   }
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 resource "aws_instance" "web" {
   count = 2
-  ami = "ami-1234"
+  ami   = "ami-1234"
   security_groups = [
     "foo",
     "bar",
@@ -34,16 +38,24 @@ resource "aws_instance" "web" {
 
   network_interface {
     device_index = 0
-    description = "Main network interface"
+    description  = "Main network interface"
   }
 
   depends_on = [
     aws_security_group.firewall,
   ]
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 resource "aws_instance" "depends" {
   lifecycle {
-    replace_triggered_by = [ aws_instance.web[1], aws_security_group.firewall.id ]
+    replace_triggered_by = [aws_instance.web[1], aws_security_group.firewall.id]
+  }
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
   }
 }

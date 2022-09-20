@@ -4,10 +4,18 @@ locals {
 
 resource "aws_instance" "a" {
   count = "${local.one}"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 resource "aws_instance" "b" {
   count = "${local.one}"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 output "output" {
