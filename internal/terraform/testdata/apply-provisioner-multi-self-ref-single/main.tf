@@ -6,4 +6,8 @@ resource "aws_instance" "foo" {
     command = aws_instance.foo[0].foo
     order   = count.index
   }
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

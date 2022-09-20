@@ -1,11 +1,15 @@
 provider "aws" {
-	region = "${local.foo}"
+  region = "${local.foo}"
 }
 
 locals {
-	foo = "bar"
+  foo = "bar"
 }
 
 resource "aws_instance" "foo" {
-    value = "${local.foo}"
+  value = "${local.foo}"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

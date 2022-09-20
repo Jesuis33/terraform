@@ -1,3 +1,7 @@
 resource "aws_instance" "baz" {
-    foo = "bar"
+  foo = "bar"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

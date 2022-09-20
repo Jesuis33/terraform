@@ -14,7 +14,11 @@ variable "map" {
 }
 
 resource "aws_instance" "bar" {
-  string  = var.string
-  list    = var.list
-  map     = var.map
+  string = var.string
+  list   = var.list
+  map    = var.map
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

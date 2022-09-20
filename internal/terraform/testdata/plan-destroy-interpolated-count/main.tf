@@ -4,6 +4,10 @@ variable "list" {
 
 resource "aws_instance" "a" {
   count = length(var.list)
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 locals {
@@ -12,7 +16,7 @@ locals {
 
 module "empty" {
   source = "./mod"
-  input = zipmap(var.list, local.ids)
+  input  = zipmap(var.list, local.ids)
 }
 
 output "out" {

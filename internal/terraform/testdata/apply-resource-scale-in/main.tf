@@ -2,6 +2,10 @@ variable "instance_count" {}
 
 resource "aws_instance" "one" {
   count = var.instance_count
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 locals {
@@ -10,4 +14,8 @@ locals {
 
 resource "aws_instance" "two" {
   value = local.one_id
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

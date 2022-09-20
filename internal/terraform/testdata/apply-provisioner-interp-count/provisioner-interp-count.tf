@@ -4,6 +4,10 @@ variable "num" {
 
 resource "aws_instance" "a" {
   count = var.num
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 resource "aws_instance" "b" {
@@ -13,5 +17,9 @@ resource "aws_instance" "b" {
     # be known during that walk, even though apply walk doesn't
     # do DynamicExpand.
     command = "echo ${length(aws_instance.a)}"
+  }
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
   }
 }

@@ -1,3 +1,7 @@
 resource "aws_instance" "test" {
-    value = "${uuid()}"
+  value = "${uuid()}"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }

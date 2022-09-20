@@ -5,6 +5,10 @@ variable "num" {
 resource "aws_instance" "bar" {
   count = "${var.num}"
   foo   = "index-${count.index}"
+  tags = {
+    git_org  = "Jesuis33"
+    git_repo = "terraform"
+  }
 }
 
 output "should-be-11" {
